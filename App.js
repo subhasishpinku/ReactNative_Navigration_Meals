@@ -7,6 +7,9 @@
 //npx expo install react-native-gesture-handler react-native-reanimated
 //npm install react-native-gesture-handler react-native-reanimated
 //npm install react-native-reanimated@1 --save --save-exact
+//https://redux-toolkit.js.org/
+//npm install @reduxjs/toolkit react-redux
+
 
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet , Button} from 'react-native';
@@ -26,6 +29,8 @@ import UserScreen from './screens/UserScreen';
 import { Ionicons } from '@expo/vector-icons';
  import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import FavoritesContextProvider from './store/context/favorites-context';
+import { Provider } from 'react-redux';
+import { store } from './store/redux/store'
 const Drawer = createDrawerNavigator();
 
 const Stack = createNativeStackNavigator();
@@ -180,7 +185,8 @@ export default function App() {
   return (
     <>
       <StatusBar style="light" />
-      <FavoritesContextProvider>
+      {/* <FavoritesContextProvider> */}
+      <Provider store={store}>
       <NavigationContainer>
         <Stack.Navigator
           screenOptions={{
@@ -206,7 +212,8 @@ export default function App() {
           />
         </Stack.Navigator>
       </NavigationContainer>
-      </FavoritesContextProvider>
+      {/* </FavoritesContextProvider> */}
+      </Provider>
     </>
   );
 }
