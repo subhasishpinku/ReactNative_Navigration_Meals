@@ -25,6 +25,7 @@ import WelcomeScreen from './screens/WelcomeScreen';
 import UserScreen from './screens/UserScreen';
 import { Ionicons } from '@expo/vector-icons';
  import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import FavoritesContextProvider from './store/context/favorites-context';
 const Drawer = createDrawerNavigator();
 
 const Stack = createNativeStackNavigator();
@@ -179,6 +180,7 @@ export default function App() {
   return (
     <>
       <StatusBar style="light" />
+      <FavoritesContextProvider>
       <NavigationContainer>
         <Stack.Navigator
           screenOptions={{
@@ -204,6 +206,7 @@ export default function App() {
           />
         </Stack.Navigator>
       </NavigationContainer>
+      </FavoritesContextProvider>
     </>
   );
 }
